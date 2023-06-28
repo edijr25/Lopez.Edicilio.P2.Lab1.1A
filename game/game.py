@@ -176,8 +176,7 @@ class Game:
             self.running = False
             pygame.quit()
             sys.exit()
-
-          
+        
     def draw(self):
         self.surface.blit(self.background, (0, 0))
         self.draw_text()
@@ -225,8 +224,6 @@ class Game:
             if len(lista):
                 bird.kill()
 
-            
-
         self.sprites.update()
         self.player.validate_platform(self.platform)
         self.update_elements(self.walls)
@@ -234,7 +231,6 @@ class Game:
         self.update_elements(self.birds)
         self.update_elements(self.lasers)
         self.generate_walls()
-
 
     def update_elements(self, elements):
         for element in elements:
@@ -265,7 +261,7 @@ class Game:
         self.platform.stop()
         self.stop_elements(self.walls)
         self.playing = False
-        self.ask_player_name()
+        self.player_name()
         self.guardar_score()
         
     def stop_elements(self, elements):
@@ -375,7 +371,7 @@ class Game:
                     else:
                         wait = False
                     
-    def ask_player_name(self):
+    def player_name(self):
         input_box = pygame.Rect(WIDTH // 2 - 100, HEIGHT // 2 - 25, 200, 50)
         color_inactive = pygame.Color('lightskyblue3')
         color_active = pygame.Color('dodgerblue2')
@@ -431,22 +427,6 @@ class Game:
                 return scores
         else:
             return []
-
-    def display_scores(self):
-        scores = self.load_scores()
-        self.surface.fill((30, 30, 30))
-        y = 100
-        for score in scores:
-            text = f"{score['Nombre']}: {score['Puntuacion']} {score['Nivel']}"
-            self.display_text(text, 30, WHITE, WIDTH // 2, y)
-            y += 50
-        pygame.display.flip()
-
-    def run_scores(self):
-        self.surface.fill(GREEN_LIGHT)
-        self.display_scores()
-        pygame.display.flip()
-        self.wait()
 
     def mostrar_score(self):
             self.surface.fill(BLACK)
