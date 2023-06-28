@@ -324,9 +324,9 @@ class Game:
                     elif event.key == pygame.K_3:
                         selected_option = 2  # Iniciar Juego (Nivel 3)
                     elif event.key == pygame.K_4:
-                        self.show_instructions()
+                        self.mostrar_instruction()
                     elif event.key == pygame.K_5:
-                        self.show_scores()
+                        self.mostrar_score()
                     elif event.key == pygame.K_6:
                         self.running = False
                         pygame.quit()
@@ -347,7 +347,7 @@ class Game:
             rect.midtop = (pos_x, pos_y + i * line_height)
             self.surface.blit(text_surface, rect)
 
-    def show_instructions(self):
+    def mostrar_instruction(self):
         self.surface.fill(BLACK)
         self.display_multiline_text(INSTRUCCIONES,30,WHITE,WIDTH//2, HEIGHT - 400)
         self.display_text('Presiona cualquier tecla para volver al menú', 30, WHITE, WIDTH // 2, HEIGHT - 50)
@@ -448,7 +448,7 @@ class Game:
         pygame.display.flip()
         self.wait()
 
-    def show_scores(self):
+    def mostrar_score(self):
             self.surface.fill(BLACK)
             self.display_text('Puntuaciones', 48, WHITE, WIDTH // 2, 50)
             scores = self.load_scores()
